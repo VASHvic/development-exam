@@ -131,6 +131,15 @@ function createTodos(arr) {
   for (let todo of arr) {
     const newLi = document.createElement('li');
     newLi.textContent = todo.title;
+    const newBtn = document.createElement('button');
+    newBtn.style.display = 'inline';
+    newBtn.textContent = 'delete';
+    newBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      newBtn.previousSibling.remove();
+      e.target.remove();
+    });
+    newLi.append(newBtn);
     ul.appendChild(newLi);
   }
   loading.style.display = 'none';
